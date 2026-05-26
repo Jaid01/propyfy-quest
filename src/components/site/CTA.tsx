@@ -15,17 +15,17 @@ export function CTA() {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="mailto:hello@propyfy.com"
+              href="mailto:Zaid@PropyFy.in"
               className="group inline-flex items-center gap-3 bg-gold px-8 py-4 text-xs font-medium uppercase tracking-[0.2em] text-gold-foreground transition-transform hover:-translate-y-0.5"
             >
               Schedule Consultation
               <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             <a
-              href="mailto:hello@propyfy.com"
+              href="mailto:Zaid@PropyFy.in"
               className="text-sm text-muted-foreground underline decoration-gold/40 underline-offset-8 transition-colors hover:text-cream"
             >
-              hello@propyfy.com
+              Zaid@PropyFy.in
             </a>
           </div>
         </div>

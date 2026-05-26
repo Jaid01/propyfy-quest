@@ -16,15 +16,21 @@ export function Footer() {
           </div>
           <div className="md:col-span-3">
             <p className="eyebrow">Studio</p>
-            <p className="mt-4 text-cream">Mumbai, India</p>
+            <p className="mt-4 text-cream">Mount Mary, Bandra West</p>
+            <p className="mt-1 text-cream">Mumbai, PIN-400050</p>
             <p className="mt-1 text-sm text-muted-foreground">By appointment</p>
           </div>
           <div className="md:col-span-4">
             <p className="eyebrow">Connect</p>
             <ul className="mt-4 space-y-2 text-cream">
               <li>
-                <a href="mailto:hello@propyfy.com" className="hover:text-gold">
-                  hello@propyfy.com
+                <a href="tel:+918299808996" className="hover:text-gold">
+                  +91 8299808996
+                </a>
+              </li>
+              <li>
+                <a href="mailto:Zaid@PropyFy.in" className="hover:text-gold">
+                  Zaid@PropyFy.in
                 </a>
               </li>
               <li>
