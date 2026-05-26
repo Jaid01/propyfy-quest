@@ -8,6 +8,8 @@ import { Sectors } from "@/components/site/Sectors";
 import { Process } from "@/components/site/Process";
 import { CTA } from "@/components/site/CTA";
 import { Footer } from "@/components/site/Footer";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { Marquee } from "@/components/site/Marquee";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -32,8 +34,10 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="relative bg-background text-foreground">
+      <ScrollProgress />
       <Nav />
       <Hero />
+      <Marquee />
       <About />
       <Services />
       <Why />
