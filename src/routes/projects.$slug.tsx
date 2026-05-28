@@ -85,7 +85,7 @@ function ProjectPage() {
             <div className="mt-10">
               <p className="eyebrow">Investment highlights</p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {project.highlights.map((h) => (
+                {project.highlights.map((h: string) => (
                   <li key={h} className="flex items-start gap-3 border border-border bg-card/40 p-4 text-sm text-foreground">
                     <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
                     {h}
@@ -97,7 +97,7 @@ function ProjectPage() {
             <div className="mt-10">
               <p className="eyebrow">Amenities</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {project.amenities.map((a) => (
+                {project.amenities.map((a: string) => (
                   <span key={a} className="border border-border bg-card/40 px-3 py-1.5 text-xs text-foreground">{a}</span>
                 ))}
               </div>
