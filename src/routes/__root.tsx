@@ -9,12 +9,15 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Footer";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
+        <h1 className="font-display text-7xl text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
@@ -22,7 +25,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center border border-accent bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-colors hover:bg-accent/90"
           >
             Go home
           </Link>
@@ -51,13 +54,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center border border-accent bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent-foreground"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center border border-border bg-background px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground hover:bg-card"
           >
             Go home
           </a>
@@ -72,25 +75,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "PropyFy Spaces helps businesses and investors find commercial properties with immersive advisory and modern presentation experiences." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "PropyFy Spaces helps businesses and investors find commercial properties with immersive advisory and modern presentation experiences." },
+      { title: "PropyFy — Commercial Real Estate Advisory & Immersive Technology" },
+      { name: "description", content: "PropyFy is a commercial real estate channel partner and tech advisory firm. Discover, evaluate and acquire premium commercial real estate through immersive VR, AV and cinematic presentation systems." },
+      { name: "author", content: "PropyFy" },
+      { property: "og:site_name", content: "PropyFy" },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "PropyFy Spaces helps businesses and investors find commercial properties with immersive advisory and modern presentation experiences." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b78f2a6e-b416-4014-9cf9-bd1e1a1eed2d/id-preview-32284d8c--e77db1fc-aa1c-4c82-ab11-4c264f00b258.lovable.app-1779754167317.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b78f2a6e-b416-4014-9cf9-bd1e1a1eed2d/id-preview-32284d8c--e77db1fc-aa1c-4c82-ab11-4c264f00b258.lovable.app-1779754167317.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#0a0a0a" },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
+    links: [{ rel: "stylesheet", href: appCss }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "PropyFy",
+        url: "https://propyfy-quest.lovable.app",
+        email: "Zaid@PropyFy.in",
+        telephone: "+91 8299808996",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Mount Mary, Bandra West",
+          addressLocality: "Mumbai",
+          postalCode: "400050",
+          addressCountry: "IN",
+        },
+      }),
+    }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -117,7 +128,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="relative min-h-screen bg-background text-foreground">
+        <ScrollProgress />
+        <Nav />
+        <Outlet />
+        <Footer />
+      </div>
     </QueryClientProvider>
   );
 }

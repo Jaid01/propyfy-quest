@@ -31,8 +31,8 @@ export function Section({
               {title && (
                 <h2
                   data-reveal
-                  style={{ ["--reveal-delay" as any]: "80ms" }}
-                  className="mt-5 font-display text-[clamp(2rem,4.5vw,3.75rem)] leading-[1.02] text-cream"
+                  style={{ ["--reveal-delay" as never]: "80ms" }}
+                  className="mt-5 font-display text-[clamp(2rem,4.5vw,3.75rem)] font-light leading-[1.02] tracking-tight text-foreground"
                 >
                   {title}
                 </h2>
@@ -41,7 +41,7 @@ export function Section({
             {intro && (
               <div
                 data-reveal
-                style={{ ["--reveal-delay" as any]: "200ms" }}
+                style={{ ["--reveal-delay" as never]: "200ms" }}
                 className="text-base leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7 md:text-lg"
               >
                 {intro}
@@ -49,7 +49,7 @@ export function Section({
             )}
           </div>
         )}
-        <div data-reveal style={{ ["--reveal-delay" as any]: "260ms" }}>
+        <div data-reveal style={{ ["--reveal-delay" as never]: "260ms" }}>
           {children}
         </div>
       </div>
