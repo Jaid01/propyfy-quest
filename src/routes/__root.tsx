@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "PropyFy" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#0a0a0a" },
+      { name: "theme-color", content: "#cfe3f3" },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
     scripts: [{

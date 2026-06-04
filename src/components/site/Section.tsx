@@ -1,58 +1,50 @@
 import type { ReactNode } from "react";
-import { useReveal } from "@/hooks/use-reveal";
 
-export function Section({
-  id,
-  eyebrow,
-  title,
-  intro,
-  children,
-  className = "",
-}: {
-  id?: string;
-  eyebrow?: string;
+interface SectionProps {
+  eyebrow?: ReactNode;
   title?: ReactNode;
   intro?: ReactNode;
-  children?: ReactNode;
-  className?: string;
-}) {
-  const ref = useReveal<HTMLElement>();
-  return (
-    <section ref={ref} id={id} className={`relative ${className}`}>
-      <div className="container-px mx-auto max-w-7xl py-24 md:py-32">
-        {(eyebrow || title || intro) && (
-          <div className="mb-16 grid gap-10 md:mb-20 md:grid-cols-12">
-            <div className="md:col-span-5">
-              {eyebrow && (
-                <p className="eyebrow" data-reveal="fade">
-                  {eyebrow}
-                </p>
-              )}
+  children: ReactNode;
+  variant?: "default" | "card";
+  id?: string;
+}
+
+export function Section({ eyebrow, title, intro, children, variant = "default", id }: SectionProps) {
+  if (variant === "card") {
+    return (
+      <section id={id} className="container-px mx-auto max-w-7xl py-3 md:py-4">
+        <div className="surface-card p-7 md:p-12">
+          {(eyebrow || title || intro) && (
+            <header className="mb-8 md:mb-12">
+              {eyebrow && <div className="eyebrow mb-3">{eyebrow}</div>}
               {title && (
-                <h2
-                  data-reveal
-                  style={{ ["--reveal-delay" as never]: "80ms" }}
-                  className="mt-5 font-display text-[clamp(2rem,4.5vw,3.75rem)] font-light leading-[1.02] tracking-tight text-foreground"
-                >
+                <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-tight text-foreground">
                   {title}
                 </h2>
               )}
-            </div>
-            {intro && (
-              <div
-                data-reveal
-                style={{ ["--reveal-delay" as never]: "200ms" }}
-                className="text-base leading-relaxed text-muted-foreground md:col-span-6 md:col-start-7 md:text-lg"
-              >
-                {intro}
-              </div>
-            )}
-          </div>
-        )}
-        <div data-reveal style={{ ["--reveal-delay" as never]: "260ms" }}>
+              {intro && <div className="mt-4 max-w-2xl text-sm text-muted-foreground md:text-base">{intro}</div>}
+            </header>
+          )}
           {children}
         </div>
-      </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id={id} className="container-px mx-auto max-w-7xl py-14 md:py-20">
+      {(eyebrow || title || intro) && (
+        <header className="mb-10 md:mb-14">
+          {eyebrow && <div className="eyebrow mb-3">{eyebrow}</div>}
+          {title && (
+            <h2 className="font-display text-[clamp(2rem,5vw,4rem)] font-medium leading-[1.05] tracking-tight text-foreground">
+              {title}
+            </h2>
+          )}
+          {intro && <div className="mt-4 max-w-2xl text-sm text-muted-foreground md:text-base">{intro}</div>}
+        </header>
+      )}
+      {children}
     </section>
   );
 }

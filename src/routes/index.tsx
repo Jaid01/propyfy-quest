@@ -1,187 +1,195 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Hero } from "@/components/site/Hero";
 import { Section } from "@/components/site/Section";
-import { Marquee } from "@/components/site/Marquee";
-import experienceImg from "@/assets/experience-noir.jpg";
-import lobbyImg from "@/assets/lobby-noir.jpg";
+import officeImg from "@/assets/catalog-office.jpg";
+import warehouseImg from "@/assets/catalog-warehouse.jpg";
+import landImg from "@/assets/catalog-land.jpg";
+import processImg from "@/assets/process-building.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "PropyFy — Commercial Real Estate Advisory & Immersive Technology" },
-      { name: "description", content: "Commercial real estate advisory and immersive technology solutions for investors, developers and enterprise clients. Grade-A offices, retail, mixed-use and investment projects." },
-      { property: "og:title", content: "PropyFy — Redefining Commercial Real Estate" },
-      { property: "og:description", content: "Advisory, channel partner and immersive proptech for premium commercial real estate." },
+      { title: "PROPYFY — Commercial Real Estate for Business" },
+      { name: "description", content: "Leasing, sale and sourcing of commercial property — Grade-A offices, warehouses and land plots across India." },
+      { property: "og:title", content: "PROPYFY — Commercial Real Estate for Business" },
+      { property: "og:description", content: "Commercial real estate advisory, channel partner and immersive technology for investors and enterprise clients." },
       { property: "og:url", content: "https://propyfy-quest.lovable.app/" },
     ],
     links: [{ rel: "canonical", href: "https://propyfy-quest.lovable.app/" }],
   }),
 });
 
-const pillars = [
-  { n: "01", title: "Commercial Advisory", body: "Strategic advisory for offices, retail, mixed-use and investment-grade commercial assets.", to: "/services" },
-  { n: "02", title: "Channel Partner Network", body: "Pan-India channel partner infrastructure across developers, occupiers and investors.", to: "/services" },
-  { n: "03", title: "Immersive Experiences", body: "VR walkthroughs, AV experience centres and cinematic project showcases.", to: "/immersive" },
-  { n: "04", title: "Technology Layer", body: "AI-powered recommendations, intelligent search and digital presentation ecosystem.", to: "/technology" },
+const stats = [
+  { k: "10+", v: "Years on the market" },
+  { k: "1000+", v: "Successful deals" },
+  { k: "4000+", v: "Properties in our base" },
+  { k: "95%", v: "Happy clients" },
 ];
 
-const services = [
-  "Commercial Property Advisory",
-  "Office & Retail Space Consulting",
-  "Commercial Leasing Support",
-  "Investment Advisory",
-  "VR Walkthrough Experiences",
-  "Experience Centre Solutions",
-  "Investor Presentation Systems",
-  "Channel Partner Services",
+const catalog = [
+  { img: officeImg, title: "Office spaces", count: "4000+ properties", to: "/projects" },
+  { img: warehouseImg, title: "Warehouses", count: "1000+ properties", to: "/projects" },
+  { img: landImg, title: "Land plots", count: "2000+ properties", to: "/projects" },
+];
+
+const process = [
+  { t: "Consultation & needs analysis", d: "We start by understanding what type of commercial property fits your business." },
+  { t: "Search & shortlist", d: "We surface only verified properties that match your budget and goals." },
+  { t: "Inspection & evaluation", d: "We arrange viewings and provide a full property breakdown." },
+  { t: "Documents & due diligence", d: "Comprehensive review of every document and ownership chain." },
+  { t: "Deal closing", d: "Full support from negotiation through to handover." },
+];
+
+const testimonials = [
+  { name: "Ekaterina I.", role: "Founder, Lumen Retail", quote: "PROPYFY handled our office relocation end-to-end. Sharp shortlist, smooth paperwork, zero surprises." },
+  { name: "Arjun M.", role: "MD, Northbridge Capital", quote: "The advisory and the immersive walkthroughs made our investor presentations dramatically faster." },
 ];
 
 function Index() {
   return (
-    <main id="next">
+    <main>
       <Hero />
-      <Marquee />
 
-      {/* Pillars */}
-      <Section
-        eyebrow="The PropyFy Platform"
-        title={<>An enterprise platform for <span className="text-gradient">modern commercial real estate.</span></>}
-        intro={<p>Four integrated pillars built to help investors, developers and enterprise occupiers move faster and decide with confidence.</p>}
-      >
-        <div className="grid gap-px overflow-hidden border border-border bg-border/60 md:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((p) => (
-            <Link
-              key={p.n}
-              to={p.to}
-              className="group relative bg-background p-8 transition-colors hover:bg-card md:p-10"
-            >
-              <div className="flex items-start justify-between">
-                <span className="eyebrow">{p.n}</span>
-                <span aria-hidden className="text-accent opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">→</span>
-              </div>
-              <h3 className="mt-6 font-display text-xl text-foreground transition-colors group-hover:text-accent md:text-2xl">{p.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
-      {/* Experience Centre teaser */}
-      <Section
-        eyebrow="Immersive Experience"
-        title={<>Experience commercial real estate <span className="text-gradient">differently.</span></>}
-      >
-        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
-          <div className="md:col-span-7">
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <img src={experienceImg} alt="PropyFy AV experience centre with curved LED wall" width={1600} height={1000} loading="lazy" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <p className="eyebrow">Experience Centre · Mumbai</p>
-                <p className="mt-2 max-w-md font-display text-2xl text-foreground">Curved LED, spatial audio and immersive project storytelling — built for enterprise decision-making.</p>
-              </div>
-            </div>
-          </div>
-          <div className="md:col-span-5 md:pt-6">
-            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-              From VR walkthroughs to cinematic project narratives, the PropyFy Experience Centre is engineered to help investors and enterprise occupiers truly understand a commercial asset before committing.
+      {/* About + stats */}
+      <Section variant="card">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-6">
+            <div className="eyebrow mb-3">About us</div>
+            <h2 className="font-display text-3xl font-medium leading-tight text-foreground md:text-5xl">About PROPYFY</h2>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground md:text-base">
+              We are an expert commercial real estate advisory that helps businesses find the right
+              property for lease or purchase. We provide an end-to-end service — from sourcing the
+              ideal property through full legal support.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/experience-centre" className="inline-flex items-center gap-2 border border-accent bg-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-foreground">
-                Visit the Centre →
-              </Link>
-              <Link to="/immersive" className="inline-flex items-center gap-2 border border-border px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-foreground hover:bg-card">
-                Immersive Layer
-              </Link>
+          </div>
+          <div className="md:col-span-6">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-8">
+              {stats.map((s) => (
+                <div key={s.k}>
+                  <div className="font-display text-4xl font-medium text-foreground md:text-5xl">{s.k}</div>
+                  <div className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">{s.v}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </Section>
 
-      {/* Services */}
-      <Section
-        eyebrow="What we do"
-        title={<>A full-stack <span className="text-gradient">commercial</span> advisory.</>}
-        intro={<p>Eight focused service lines across advisory, leasing, investment and immersive marketing — delivered as one integrated platform.</p>}
-      >
-        <div className="grid gap-px border border-border bg-border/60 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s, i) => (
-            <div key={s} className="group bg-background p-6 transition-colors hover:bg-card">
-              <span className="font-display text-xs tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
-              <p className="mt-4 font-display text-base text-foreground transition-colors group-hover:text-accent">{s}</p>
-            </div>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-t border-border pt-8 text-muted-foreground/80">
+          {["ANAROCK", "JLL", "CBRE", "SAVILLS", "KNIGHT FRANK"].map((b) => (
+            <span key={b} className="font-display text-sm tracking-[0.2em]">{b}</span>
           ))}
         </div>
-        <div className="mt-10">
-          <Link to="/services" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground hover:text-accent">
-            See all services <span aria-hidden>→</span>
-          </Link>
+      </Section>
+
+      {/* Catalog */}
+      <Section variant="card">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <div className="eyebrow mb-3">Catalog</div>
+            <h2 className="font-display text-3xl font-medium leading-tight text-foreground md:text-5xl">
+              Property<br />catalog
+            </h2>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              A broad selection of commercial real estate for your business.
+            </p>
+          </div>
+          <div className="md:col-span-8 grid gap-4 sm:grid-cols-3">
+            {catalog.map((c) => (
+              <Link key={c.title} to={c.to} className="group overflow-hidden rounded-2xl bg-muted">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={c.img} alt={c.title} width={800} height={600} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <div className="p-4">
+                  <div className="font-display text-base text-foreground">{c.title}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">{c.count}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex justify-end gap-3">
+          <button className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground hover:bg-muted" aria-label="Previous">←</button>
+          <button className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground hover:bg-muted" aria-label="Next">→</button>
         </div>
       </Section>
 
-      {/* About teaser */}
-      <Section
-        eyebrow="About PropyFy"
-        title={<>Commercial advisory meets <span className="text-gradient">modern experience.</span></>}
-      >
-        <div className="grid gap-12 md:grid-cols-12">
+      {/* Process */}
+      <Section variant="card">
+        <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <div className="relative aspect-[3/4] overflow-hidden">
-              <img src={lobbyImg} alt="Premium commercial lobby" width={1080} height={1600} loading="lazy" className="h-full w-full object-cover" />
+            <div className="eyebrow mb-3">How we work</div>
+            <h2 className="font-display text-3xl font-medium leading-tight text-foreground md:text-5xl">How we work</h2>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              We made the process of working with us as simple and transparent as possible.
+            </p>
+            <div className="relative mt-8 overflow-hidden rounded-2xl">
+              <img src={processImg} alt="Modern white commercial building" width={900} height={1100} loading="lazy" className="h-[420px] w-full object-cover" />
+              <div className="absolute right-4 top-4 grid h-24 w-24 place-items-center rounded-full bg-card text-center text-[0.62rem] font-medium uppercase tracking-[0.12em] text-foreground shadow-lg">
+                Free<br/>consultation
+              </div>
             </div>
           </div>
-          <div className="md:col-span-6 md:col-start-7">
-            <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
-              PropyFy is built for the people who build, lease and invest in commercial real estate. We combine deep market expertise with a modern technology stack to make every step — discovery, evaluation, decision — clearer and faster.
-            </p>
-            <ul className="mt-10 divide-y divide-border border-y border-border">
-              {[
-                "Commercial-first advisory & channel partnership",
-                "Pan-India developer & occupier relationships",
-                "Immersive VR / AV presentation infrastructure",
-                "Investor-grade analysis & deal structuring",
-                "Technology-driven sales infrastructure",
-              ].map((p, i) => (
-                <li key={p} className="flex items-baseline gap-6 py-5">
-                  <span className="font-display text-xs tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="font-display text-lg text-foreground md:text-xl">{p}</span>
+          <div className="md:col-span-7">
+            <ul className="divide-y divide-border">
+              {process.map((p, i) => (
+                <li key={p.t} className="flex gap-5 py-5 first:pt-0">
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-foreground text-card text-sm font-medium">
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                  <div>
+                    <div className="font-display text-base text-foreground md:text-lg">{p.t}</div>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.d}</p>
+                  </div>
                 </li>
               ))}
             </ul>
-            <Link to="/about" className="mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-foreground hover:text-accent">
-              About the company <span aria-hidden>→</span>
-            </Link>
           </div>
+        </div>
+      </Section>
+
+      {/* Testimonials */}
+      <Section variant="card">
+        <div className="eyebrow mb-3">Testimonials</div>
+        <h2 className="font-display text-3xl font-medium leading-tight text-foreground md:text-5xl">What clients say</h2>
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {testimonials.map((t) => (
+            <figure key={t.name} className="rounded-2xl bg-muted p-6 md:p-8">
+              <span className="font-display text-3xl text-primary">“</span>
+              <blockquote className="mt-2 text-sm leading-relaxed text-foreground md:text-base">{t.quote}</blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-full bg-foreground text-card text-xs">{t.name[0]}</div>
+                <div>
+                  <div className="text-sm font-medium text-foreground">{t.name}</div>
+                  <div className="text-xs text-muted-foreground">{t.role}</div>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </Section>
 
       {/* CTA */}
-      <section className="relative isolate overflow-hidden border-y border-border">
-        <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_50%,oklch(0.68_0.20_250/0.18),transparent_70%)]" />
-        <div className="container-px mx-auto max-w-7xl py-28 md:py-40">
-          <div className="max-w-4xl">
-            <p className="eyebrow">Get in touch</p>
-            <h2 className="mt-6 font-display text-[clamp(2.25rem,5.5vw,5rem)] font-light leading-[1.02] tracking-tight text-foreground">
-              Looking for the right{" "}
-              <span className="text-gradient">commercial space?</span>
+      <Section variant="card">
+        <div className="grid gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-7">
+            <div className="eyebrow mb-3">Get in touch</div>
+            <h2 className="font-display text-3xl font-medium leading-[1.05] text-foreground md:text-5xl">
+              Let's discuss<br/>your project
             </h2>
-            <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg">
-              Speak to an advisor, schedule a consultation, or visit the PropyFy Experience Centre in Mumbai.
+            <p className="mt-5 max-w-md text-sm text-muted-foreground md:text-base">
+              Questions, suggestions or ready to start? Leave your details and we'll be in touch shortly.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link to="/contact" className="group inline-flex items-center gap-3 border border-accent bg-accent px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-transform hover:-translate-y-0.5">
-                Schedule Consultation
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-              <a href="mailto:Zaid@PropyFy.in" className="text-sm text-muted-foreground underline decoration-accent/40 underline-offset-8 hover:text-foreground">
-                Zaid@PropyFy.in
-              </a>
-            </div>
           </div>
+          <form className="md:col-span-5 space-y-3" onSubmit={(e) => e.preventDefault()}>
+            <input type="text" placeholder="Your name" className="w-full rounded-full border border-border bg-card px-5 py-3.5 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none" />
+            <input type="tel" placeholder="Phone number" className="w-full rounded-full border border-border bg-card px-5 py-3.5 text-sm placeholder:text-muted-foreground focus:border-primary focus:outline-none" />
+            <button type="submit" className="btn-primary w-full justify-center">Send enquiry →</button>
+            <p className="px-2 text-[0.7rem] text-muted-foreground">By submitting, you agree to our privacy policy.</p>
+          </form>
         </div>
-      </section>
+      </Section>
     </main>
   );
 }
